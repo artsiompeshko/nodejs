@@ -12,7 +12,9 @@ module.exports = {
   env: {},
   settings: {},
   globals: {},
-  rules: {},
+  rules: {
+    'class-methods-use-this': 'off'
+  },
   plugins: [
       'standard',
       'promise',

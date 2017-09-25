@@ -5,10 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "start": "node ./node_modules/babel-cli/bin/babel src -d ./dist && node ./dist/index.js"
+    "babel": "node ./node_modules/babel-cli/bin/babel -w src/ -d dist/",
+    "start": "npm run babel | nodemon --watch dist dist/index.js"
   },
   "author": "Artsiom Peshko",
   "license": "ISC",
+  "dependencies": {
+    "babel-polyfill": "^6.26.0"
+  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
@@ -23,6 +27,7 @@
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-node": "^5.1.1",
     "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-standard": "^3.0.1"
+    "eslint-plugin-standard": "^3.0.1",
+    "nodemon": "^1.12.1"
   }
 }
