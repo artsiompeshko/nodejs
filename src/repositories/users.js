@@ -7,21 +7,25 @@ const nextId = generateId();
 // initial state
 users.push(new User({
   id: nextId(),
-  name: 'Initial User',
+  login: 'Artsiom',
+  password: 'Artsiom123',
 }));
 
-const addUser = ({ name = 'Unknown' }) => {
+const addUser = ({ login = 'Unknown', password }) => {
   users.push(new User({
     id: nextId(),
-    name,
+    login,
+    password,
   }));
 };
 
-const getUser = queryId => users.filter(({ id }) => id === queryId)[0];
+const getUserById = queryId => users.filter(({ id }) => id === queryId)[0];
+const getUserByLogin = queryLogin => users.filter(({ login }) => login === queryLogin)[0];
 const getUsers = () => users;
 
 export default {
   addUser,
-  getUser,
+  getUserById,
   getUsers,
+  getUserByLogin,
 };

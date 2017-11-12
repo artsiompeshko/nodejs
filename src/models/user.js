@@ -1,6 +1,11 @@
 export default class User {
-  constructor({ id, name }) {
+  constructor({ id, login, password }) {
     this.id = id;
-    this.name = name;
+    this.login = login;
+    this.password = password;
+  }
+
+  compare({ login, password }) {
+    return this.login === login && this.password === password;
   }
 }

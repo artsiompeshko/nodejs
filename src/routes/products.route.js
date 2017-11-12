@@ -1,8 +1,12 @@
 import { Router } from 'express';
 import reviewsRouter from './reviews.route';
 import productsRepository from '../repositories/products';
+import auth from '../middlewares/auth';
 
 const router = Router();
+
+// authentication is required
+router.use('/', auth);
 
 // extract user
 router.use('/:id', (req, res, next) => {
