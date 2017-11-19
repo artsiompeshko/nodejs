@@ -1,28 +1,11 @@
-import Product from '../models/product';
-import generateId from '../helpers/id-generator';
+import { Product } from '../../models';
 
-const products = [];
-const nextId = generateId();
+const addProduct = async ({ reviews = [] }) => Product.create({
+  reviews,
+});
 
-// initial state
-products.push(new Product({
-  id: nextId(),
-  reviews: ['Initial Review'],
-}));
-
-const addProduct = ({ reviews = [] }) => {
-  const newProduct = new Product({
-    id: nextId(),
-    reviews,
-  });
-
-  products.push(newProduct);
-
-  return newProduct;
-};
-
-const getProduct = queryId => products.filter(({ id }) => +id === +queryId)[0];
-const getProducts = () => products;
+const getProduct = async id => Product.findById(id);
+const getProducts = async () => Product.findAll();
 
 export default {
   addProduct,

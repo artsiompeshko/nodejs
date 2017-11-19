@@ -10,9 +10,9 @@ const certificate = fs.readFileSync('./config/private.key');
 const router = Router();
 
 // authenticate
-router.post('/', authValidation(authValidationSchema), (req, res) => {
-  const user = usersRepository.getUserByLogin(req.body.login);
-  const isValidUser = user && user.compare(req.body);
+router.post('/', authValidation(authValidationSchema), async (req, res) => {
+  const user = await usersRepository.getUserByLogin(req.body.login);
+  const isValidUser = user && req.body.login === user.login && req.body.password === user.password;
 
   if (isValidUser) {
     const payload = {

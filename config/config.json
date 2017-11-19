@@ -1,3 +1,25 @@
 {
-  "name": "NodeMP HW App"
+  "development": {
+    "username": "postgres",
+    "password": "admin123",
+    "database": "nodejs",
+    "host": "127.0.0.1",
+    "dialect": "postgresql",
+    "define": {
+      "timestamps": false
+    }
+  },
+  "test": {
+    "username": "postgres",
+    "password": "admin123",
+    "database": "nodejs",
+    "host": "127.0.0.1",
+    "dialect": "postgresql",
+    "define": {
+      "timestamps": false
+    }
+  },
+  "production": {
+    "dialect": "postgresql"
+  }
 }

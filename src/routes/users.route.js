@@ -7,8 +7,9 @@ const router = Router();
 // authentication is required
 router.use('/', auth);
 
-router.get('/', (req, res) => {
-  res.json(usersRepository.getUsers());
+router.get('/', async (req, res) => {
+  const users = await usersRepository.getUsers();
+  res.json(users);
 });
 
 export default router;

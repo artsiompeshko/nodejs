@@ -1,27 +1,18 @@
-import User from '../models/user';
-import generateId from '../helpers/id-generator';
+import { User } from '../../models';
 
-const users = [];
-const nextId = generateId();
+const addUser = async ({ login = 'Unknown', password }) => User.create({
+  login,
+  password,
+});
 
-// initial state
-users.push(new User({
-  id: nextId(),
-  login: 'Artsiom',
-  password: 'Artsiom123',
-}));
-
-const addUser = ({ login = 'Unknown', password }) => {
-  users.push(new User({
-    id: nextId(),
+const getUserById = async id => User.findById(id);
+const getUserByLogin = async login => User.findOne({
+  where: {
     login,
-    password,
-  }));
-};
+  },
+});
 
-const getUserById = queryId => users.filter(({ id }) => id === queryId)[0];
-const getUserByLogin = queryLogin => users.filter(({ login }) => login === queryLogin)[0];
-const getUsers = () => users;
+const getUsers = async () => User.findAll();
 
 export default {
   addUser,
